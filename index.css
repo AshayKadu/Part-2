@@ -94,3 +94,32 @@
     font-size: 14px;
     border: none;
 }
+
+.resname{
+    display: flex;
+    justify-content: center;
+}
+
+.name-container{
+    margin: 20px;
+    width: 60vw;
+}
+.resdetails{
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0 10px;
+}
+
+.items{
+    margin: 5px;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.item-logo{
+    padding: 1vw;
+    width: 15vw;
+    height: 15vw;
+}
