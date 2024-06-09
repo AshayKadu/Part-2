@@ -123,3 +123,10 @@
     width: 15vw;
     height: 15vw;
 }
+
+.user-card{
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    width: 25vw;
+}
