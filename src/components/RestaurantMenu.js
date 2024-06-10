@@ -10,6 +10,8 @@ const RestaurantMenu = () => {
 
     const {resId} = useParams();
 
+    const data = useRestaurantMenu()
+
 
     useEffect(()=> {
         fetchMenu();
