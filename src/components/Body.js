@@ -11,7 +11,8 @@ const Body = () => {
   // Normal JS variable
   // let listOfRestaurant =[];
   const [searchText, setSearchText] = useState("");
-  const [topRate, setTopRate] = useState("Top Rated Restaurants")
+  const [topRate, setTopRate] = useState("Top Rated Restaurants");
+
 
   useEffect(() => {
     fetchData();
@@ -32,6 +33,8 @@ const Body = () => {
     );
   };
 
+  console.log(listOfRestaurant);
+
   const handleClick = () =>{
     if(topRate === "Top Rated Restaurants"){
       setTopRate("All Restaurants");
@@ -49,15 +52,16 @@ const Body = () => {
   const onlineStatus= useOnlineStatus();
   if(onlineStatus === false) return <h1>Looks like you're offline!! Please check internet connection.</h1>
 
-  return listOfRestaurant.length === 0 ? (
+  return (listOfRestaurant.length === 0) ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex items-center" >
+        <div className="search m-3 p-3">
+        
           <input
+          className="bg-slate-200 h-8 w-60"
             type="text"
-            className="search-box"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -67,7 +71,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="px-3 py-2 bg-green-200 m-3 rounded-lg"
             onClick={() => {
               const filteredRestaurant = listOfRestaurant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -79,12 +83,12 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter-btn"
+          className=" bg-blue-400 w-42 h-10 rounded-lg"
           onClick={handleClick}>
           {topRate}
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurentCard resData={restaurant} /></Link>
         ))}
