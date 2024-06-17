@@ -1,8 +1,10 @@
 import RestaurentCard from "./RestaurentCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+
 
 const Body = () => {
   // Local state variable - Super powerful variable
@@ -33,7 +35,7 @@ const Body = () => {
     );
   };
 
-  console.log(listOfRestaurant);
+  // console.log(listOfRestaurant);
 
   const handleClick = () =>{
     if(topRate === "Top Rated Restaurants"){
@@ -52,6 +54,8 @@ const Body = () => {
   const onlineStatus= useOnlineStatus();
   if(onlineStatus === false) return <h1>Looks like you're offline!! Please check internet connection.</h1>
 
+  const {loggedInUser, setUserName} = useContext(UserContext);
+
   return (listOfRestaurant.length === 0) ? (
     <Shimmer />
   ) : (
@@ -60,7 +64,7 @@ const Body = () => {
         <div className="search m-3 p-3">
         
           <input
-          className="bg-slate-200 h-8 w-60"
+          className="bg-slate-200 border-gray-600 h-8 w-60"
             type="text"
             value={searchText}
             onChange={(e) => {
@@ -87,6 +91,8 @@ const Body = () => {
           onClick={handleClick}>
           {topRate}
         </button>
+        <label className="mx-2">UserName :</label>
+        <input className="m-6 border border-gray-500 p-2" type="text" value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
       </div>
       <div className="flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
