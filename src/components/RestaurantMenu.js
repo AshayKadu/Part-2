@@ -18,7 +18,7 @@ const RestaurantMenu = () => {
   // console.log(ashay)
   const menuItem = useRestaurantItem(resId);
 
-const [showIndex, setShowIndex] = useState(0);
+const [showIndex, setShowIndex] = useState();
 
   // useEffect(()=> {
   //     fetchMenu();

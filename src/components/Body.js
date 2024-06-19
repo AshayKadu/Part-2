@@ -87,7 +87,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className=" bg-blue-400 w-42 h-10 rounded-lg"
+          className=" bg-blue-400 px-2 w-42 h-10 rounded-lg"
           onClick={handleClick}>
           {topRate}
         </button>
